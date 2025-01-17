@@ -1,9 +1,10 @@
 const express=require("express")
 const routes=express.Router()
+const  {register}=require("../controllers/authControllers")
+const  {login}=require("../controllers/authControllers")
 
-routes.get("/register" ,register)
-routes.get("/login" ,login)
+routes.post("/register" ,register)
+routes.post("/login" ,login)
 
 
-
-model.export=routes
+module.exports = routes;
