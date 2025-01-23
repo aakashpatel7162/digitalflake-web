@@ -20,7 +20,9 @@ const app=express()
  app.use('/api/categories', categoryRoutes); 
 app.use('/api/subcategories', subcategoryRoutes); 
 app.use('/api/products', productRoutes); 
-
+app.post('/register', (req, res) => {
+   res.send('Register route working');
+ });
 
  app.listen(PORT,()=>{
     return console.log("app is run on port",PORT)

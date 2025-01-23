@@ -12,6 +12,7 @@ const jwt = require('jsonwebtoken');
 
         const decoded=jwt.verify(token, process.env.JWT_SECRET)
         req.user = decoded;
+        req.userId = decoded.id
         next();
       } catch (error) {
         res.status(403).json({ message: 'Invalid token' });

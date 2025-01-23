@@ -25,8 +25,8 @@ exports.createCategory = async (req, res) => {
 
 exports.getCategories = async (req, res) => {
   try {
-    const categories = await Category.find().select('name description'); 
-   
+    userId=req.userId
+    const categories = await Category.find({ userId }).select('name description');
      res.status(200).json(categories);
 
   } catch (error) {
@@ -37,7 +37,7 @@ exports.getCategories = async (req, res) => {
 exports.getCategoryById = async (req, res) => {
   try {
     const { id } = req.query; 
-        const category = await Category.findById(id); 
+      const category = await Category.findById(id); 
     if (!category) {
       return res.status(404).json({ message: 'Category not found' });
     }
@@ -49,22 +49,16 @@ exports.getCategoryById = async (req, res) => {
 };
 
 exports.updateCategory = async (req, res) => {
-  console.log("yes")
 
   try {
     const { id } = req.params;
-    // const  id  ="678a4b5b8876d445caf022f7"
     const updateData = req.body; 
-    // const updateData= {
-    //   "name":"Clothing",
-    //   "description": "Main Clothing"
-    //   }
+   
     const category = await Category.findByIdAndUpdate(id, updateData, { new: true });
 
     if (!category) {
       return res.status(404).json({ message: 'Category not found' });
     }
-console.log("yes")
     res.status(200).json(  {message: 'category updating success', category: category });
   } catch (error) {
     res.status(500).json({ message: 'Error updating category', error: error.message });
