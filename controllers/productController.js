@@ -24,7 +24,6 @@ exports.createProduct = async (req, res) => {
     res.status(500).json({ message: 'Error creating product', error: error.message });
   }
 };
-
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find()
