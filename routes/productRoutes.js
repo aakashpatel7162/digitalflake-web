@@ -8,6 +8,4 @@ router.get('/', authenticate, getProducts);
 router.get('/:id', authenticate, getProductById);
 router.put('/:id', authenticate, updateProduct);
 router.delete('/:id', authenticate, deleteProduct);
-
-
 module.exports = router;

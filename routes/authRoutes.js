@@ -6,5 +6,4 @@ const  {login}=require("../controllers/authControllers")
 routes.post("/register" ,register)
 routes.post("/login" ,login)
 
-
 module.exports = routes;

@@ -8,7 +8,6 @@ const {
     updateCategory,
     deleteCategory,
 } = require('../controllers/categoryControllers');
-
 router.post('/', authenticate, createCategory);
 router.get('/', authenticate, getCategories);
 router.get('/', authenticate, getCategoryById);

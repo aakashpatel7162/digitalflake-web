@@ -26,8 +26,6 @@ const register = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
-
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -40,7 +38,6 @@ const login = async (req, res) => {
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-
     const token = generateToken(user);
 
     res.status(200).json({ message: "Login successful", token });
@@ -49,5 +46,4 @@ const login = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-
 module.exports = { login, register };
